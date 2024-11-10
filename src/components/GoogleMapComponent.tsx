@@ -5,6 +5,7 @@ import ControlPanel from './ControlPanel';
 import { Session } from 'next-auth';
 import { getLatLong } from './getLatLong';
 import Loading from './Loading';
+import getAdvancedMarkersDiv from './Marker';
 
 
 const GoogleMapComponent = ({ session }: { session: Session | null }) => {
@@ -38,9 +39,10 @@ const GoogleMapComponent = ({ session }: { session: Session | null }) => {
                 defaultZoom={17}
                 gestureHandling={'greedy'}
                 disableDefaultUI={true}
-                id='d053a0f5bf3416fd'
-            />
-
+                mapId={process.env.NEXT_PUBLIC_MAP_ID}
+            >
+                {getAdvancedMarkersDiv(10, location.latitude, location.longitude)}
+            </Map>
             <ControlPanel session={session} />
         </APIProvider >
     );
