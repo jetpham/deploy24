@@ -5,7 +5,7 @@ import ControlPanel from './ControlPanel';
 import { Session } from 'next-auth';
 import { getLatLong } from './getLatLong';
 import Loading from './Loading';
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
 import getAdvancedMarkersDiv from './Marker';
 
 const GoogleMapComponent = ({ session }: { session: Session | null }) => {
