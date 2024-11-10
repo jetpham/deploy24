@@ -3,9 +3,25 @@ import React from 'react';
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 import ControlPanel from './ControlPanel';
 import { Session } from 'next-auth';
+import { getLatLong } from './getLatLong';
+import Loading from './Loading';
 
 
 const GoogleMapComponent = ({ session }: { session: Session | null }) => {
+    const [location, setLocation] = React.useState<{ latitude: number, longitude: number } | null>(null);
+
+    React.useEffect(() => {
+        const fetchLocation = async () => {
+            const loc = await getLatLong();
+            setLocation(loc);
+        };
+        fetchLocation();
+    }, []);
+
+    if (!location) {
+        return (<Loading />)
+    }
+
     return (
         <APIProvider
             apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}
@@ -18,10 +34,11 @@ const GoogleMapComponent = ({ session }: { session: Session | null }) => {
         >
             <Map
                 style={{ width: '100vw', height: '100vh' }}
-                defaultCenter={{ lat: 22.54992, lng: 0 }}
-                defaultZoom={3}
+                defaultCenter={{ lat: location.latitude, lng: location.longitude }}
+                defaultZoom={17}
                 gestureHandling={'greedy'}
                 disableDefaultUI={true}
+                id='d053a0f5bf3416fd'
             />
 
             <ControlPanel session={session} />

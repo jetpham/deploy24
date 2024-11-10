@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -6,14 +6,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
     Card,
 } from "@/components/ui/card"
-import SubmitMarker from './SubmitMarker';
+import { getLatLong } from './getLatLong';
 import './ControlPanel.css';
 import { handleSignIn, handleSignOut } from "@/authActions"
-import { auth } from "@/auth"
 import { Session } from 'next-auth';
 
 
 const ControlPanel = ({ session }: { session: Session | null }) => {
+    const [message, setMessage] = useState('');
 
     const getInitials = (name: string) => {
         const names = name.split(' ');
@@ -21,6 +21,13 @@ const ControlPanel = ({ session }: { session: Session | null }) => {
         return initials.toUpperCase();
     };
 
+    const handleSend = async () => {
+        const location = await getLatLong();
+        const currentTime = new Date().toLocaleString();
+        console.log('Location:', location);
+        console.log('Current Time:', currentTime);
+        console.log('Message:', message);
+    }
 
     return (
         <Card className='ControlPanel'>
@@ -33,9 +40,12 @@ const ControlPanel = ({ session }: { session: Session | null }) => {
                         </Avatar>
                         <Button variant='destructive' className='SignOut' type='submit'>Sign Out</Button>
                     </form>
-                    <Textarea className='TextArea' />
-                    <Button variant='outline' className='Submit'>Send</Button>
-                    <SubmitMarker />
+                    <Textarea 
+                        className='TextArea' 
+                        value={message} 
+                        onChange={(e) => setMessage(e.target.value)} 
+                    />
+                    <Button variant='outline' className='Submit' onClick={handleSend}>Send</Button>
                 </>
             ) : (
                 <form action={handleSignIn}>
