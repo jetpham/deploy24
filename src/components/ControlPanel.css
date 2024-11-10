@@ -20,3 +20,21 @@
     display: block;
     margin: 0 auto;
 }
+
+.Avatar {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.SignOut {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.SignOutForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
