@@ -1,0 +1,15 @@
+.ControlPanel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.TextArea {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.Submit {
+    display: block;
+    margin: 0 auto;
+}

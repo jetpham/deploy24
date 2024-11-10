@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
-import { APIProvider, Map} from '@vis.gl/react-google-maps';
+import { APIProvider, Map } from '@vis.gl/react-google-maps';
+import ControlPanel from './ControlPanel';
 
 const GoogleMapComponent = () => {
     return (
@@ -12,8 +13,8 @@ const GoogleMapComponent = () => {
                 gestureHandling={'greedy'}
                 disableDefaultUI={true}
             >
-
             </Map>
+            <ControlPanel />
         </APIProvider>
     );
 };
