@@ -1,9 +1,10 @@
 import React from 'react';
+import Image from 'next/image'
 
 const Loading = () => {
     return (
         <div>
-            <img src="/icon.png" alt="Loading" style={{ animation: 'spin 2s linear infinite' }} />
+            <Image src="/icon.png" alt="Loading" width={664} height={664} style={{ animation: 'spin 2s linear infinite' }} />
             <style>
                 {`
         @keyframes spin {
