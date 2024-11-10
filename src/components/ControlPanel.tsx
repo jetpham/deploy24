@@ -10,16 +10,17 @@ import SubmitMarker from './SubmitMarker';
 import './ControlPanel.css';
 import { handleSignIn, handleSignOut } from "@/authActions"
 import { auth } from "@/auth"
+import { Session } from 'next-auth';
 
 
-const ControlPanel = async () => {
-    const session = await auth()
+const ControlPanel = ({ session }: { session: Session | null }) => {
 
     const getInitials = (name: string) => {
         const names = name.split(' ');
         const initials = names.map(n => n[0]).join('');
         return initials.toUpperCase();
     };
+
 
     return (
         <Card className='ControlPanel'>

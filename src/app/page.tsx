@@ -1,9 +1,11 @@
 import GoogleMapComponent from '../components/GoogleMapComponent';
+import { auth } from "@/auth"
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth()
   return (
     <div>
-      <GoogleMapComponent />
+      <GoogleMapComponent session={session} />
     </div>
   );
 }
