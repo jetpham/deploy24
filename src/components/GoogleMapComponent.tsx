@@ -9,7 +9,7 @@ import { PrismaClient } from '@prisma/client';
 import getAdvancedMarkersDiv from './Marker';
 
 const GoogleMapComponent = ({ session }: { session: Session | null }) => {
-    const prisma = new PrismaClient();
+    // const prisma = new PrismaClient();
 
     const [location, setLocation] = React.useState<{ latitude: number, longitude: number } | null>(null);
 

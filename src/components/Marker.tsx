@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
 
 export interface MarkerData {
     latitude: number;
@@ -7,11 +7,11 @@ export interface MarkerData {
     createdAt: Date;
 }
 
-interface MarkerServerProps {
-    prisma: PrismaClient;
-}
+// interface MarkerServerProps {
+//     prisma: PrismaClient;
+// }
 
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import { AdvancedMarker } from '@vis.gl/react-google-maps';
 
 // const MarkerLoader: React.FC<MarkerServerProps> = ({ prisma }) => {
