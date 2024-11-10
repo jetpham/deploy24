@@ -6,11 +6,17 @@
 }
 
 .TextArea {
+    margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
 }
 
 .Submit {
+    display: block;
+    margin: 0 auto;
+}
+
+.SignIn {
     display: block;
     margin: 0 auto;
 }
